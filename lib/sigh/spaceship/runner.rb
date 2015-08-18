@@ -112,7 +112,7 @@ module Sigh
       # Filter them
       certificates = certificates.find_all do |c|
         if Sigh.config[:cert_id]
-          next unless (c.id == Sigh.config[:cert_id].strip)
+          next unless (c.id == Sigh.config[:cert_id].strip) or (c.expires.strftime("%d/%m/%Y") == Sigh.config[:cert_id])
         end
 
         if Sigh.config[:cert_owner_name]
